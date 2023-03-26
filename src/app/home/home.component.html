@@ -1,0 +1,76 @@
+<h2>Appointments</h2>
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contant no</th>
+        <th>Date of birth</th>
+        <th>Appointment Time</th>
+        <th>Doctor</th>
+        
+      </tr>
+        <tr  *ngFor="let appointment of appointments ">
+          <td>{{appointment.id}}</td>
+          <td>{{appointment.patientName}}</td>
+          <td>{{appointment.patientEmailId}}</td>
+          <td>{{appointment.patientContactNo}}</td>
+          <td>{{appointment.patientDateOfBirth}}</td>
+          <td>{{appointment.appointmentDateTime}}</td>
+          <td>{{appointment.doctor.name}}</td>
+        </tr>
+        
+</table>
+
+<h2>Doctors</h2>
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specification</th>
+        <th>Availbility from</th>
+        <th>Availbility to</th>
+        
+      </tr>
+        <tr  *ngFor="let doctor of doctors ">
+          <td>{{doctor.id}}</td>
+          <td>{{doctor.name}}</td>
+          <td>{{doctor.specification}}</td>
+          <td>{{doctor.availabilityFrom}}</td>
+          <td>{{doctor.availabilityTo}}</td>
+        </tr>
+        
+</table>
+
+<div class="container">
+    <h1>Create Appointment</h1>
+
+    <form [formGroup]='appointmentForm' novalidate class="form" (ngSubmit)='submit()'>
+        <label>{{appointmentForm.value.id}}</label>
+        <pre></pre>
+        <input formControlName='patientName' type="text" class="form-control" placeholder="Patient name" />
+        <pre></pre>
+        <input formControlName='patientEmailId' type="text" class="form-control" placeholder="Patient Email ID" />
+        <pre></pre>
+        <input formControlName='patientContactNo' type="text" class="form-control" placeholder="Patient Contact Number" />
+        <pre></pre>
+        <input formControlName='appointmentDateTime' type="datetime-local" name="appointmentDateTime" class = "form-control">
+        <pre></pre>
+        <select formControlName='doctor' id="doctor"  name="doctor" class = "form-control">  
+            <option disabled>Select Doctor</option>  
+            <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.name}}</option>  
+        </select>  
+        <pre></pre>
+        <button class="btn btn-info">Submit</button>
+      </form>
+</div>
+
+<div class="container">
+    <h1>Update Appointment</h1>
+    <select name="appointmentSelector" ngModel (ngModelChange)="loadAppointment($event)" id="selectid" class="form-control-mb-12">
+        <option disabled>Select Appointment</option>  
+        <option *ngFor="let appointment of appointments" [ngValue]="appointment">{{appointment.id}}</option>  
+    </select>  
+</div>
