@@ -1,0 +1,23 @@
+<p>doctor works!</p>
+
+
+<h2>Doctors</h2>
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specification</th>
+        <th>Availbility from</th>
+        <th>Availbility to</th>
+        
+      </tr>
+        <tr  *ngFor="let doctor of doctors ">
+          <td>{{doctor.id}}</td>
+          <td>{{doctor.name}}</td>
+          <td>{{doctor.specification}}</td>
+          <td>{{doctor.availabilityFrom}}</td>
+          <td>{{doctor.availabilityTo}}</td>
+        </tr>
+        
+</table>

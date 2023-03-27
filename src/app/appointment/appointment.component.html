@@ -1,0 +1,36 @@
+<h2>Appointments</h2>
+<button class="btn btn-success btn-lg float-right" [routerLink]="['create']">Create Appointment</button>
+<pre></pre>
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Patient Name</th>
+        <th>Patient Email</th>
+        <th>Patient Contant no</th>
+        <th>Patient Date of birth</th>
+        <th>Appointment Time</th>
+        <th>Doctor</th>
+        <th>Update</th>
+        
+      </tr>
+        <tr  *ngFor="let appointment of appointments ">
+          <td>{{appointment.id}}</td>
+          <td>{{appointment.patientName}}</td>
+          <td>{{appointment.patientEmailId}}</td>
+          <td>{{appointment.patientContactNo}}</td>
+          <td>{{appointment.patientDateOfBirth}}</td>
+          <td>{{appointment.appointmentDateTime}}</td>
+          <td>{{appointment.doctor.name}}</td>
+          <td><button class="btn btn-info" [routerLink]="['update']" [state]="appointment">Update</button></td>
+        </tr>
+        
+</table>
+
+<!-- <div class="container">
+  <h1>Update Appointment</h1>
+  <select name="appointmentSelector" ngModel (ngModelChange)="loadAppointment($event)" id="selectid" class="form-control-mb-12">
+      <option disabled>Select Appointment</option>  
+      <option *ngFor="let appointment of appointments" [ngValue]="appointment">{{appointment.id}}</option>  
+  </select>  
+</div> -->
+

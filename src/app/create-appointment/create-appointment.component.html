@@ -1,0 +1,41 @@
+<div class="container">
+    <pre></pre>
+    <h1>Create Appointment</h1>
+    
+    <form [formGroup]='appointmentForm' novalidate class="form" (ngSubmit)='submit()'>
+        <pre></pre>
+        <label>Patient name</label>
+        <input formControlName='patientName' type="text" class="form-control" placeholder="Patient name" />
+        <div class="form-control-feedback" *ngIf="appointmentForm.controls.patientName.errors
+        && (appointmentForm.controls.patientName.dirty || appointmentForm.controls.patientName.touched)">
+           <p *ngIf="appointmentForm.controls.patientName.errors" class="text-danger">Enter Patient Name</p>
+         </div>
+        <pre></pre>
+        <label>Patient Email ID</label>
+        <input formControlName='patientEmailId' type="text" class="form-control" placeholder="Patient Email ID" ngModel [email]="true" />
+        <div class="form-control-feedback" *ngIf="appointmentForm.controls.patientEmailId.errors
+        && (appointmentForm.controls.patientEmailId.dirty || appointmentForm.controls.patientEmailId.touched)">
+           <p *ngIf="appointmentForm.controls.patientEmailId.errors" class="text-danger">Enter Valid Email ID</p>
+         </div>
+        <pre></pre>
+        <label>Patient Contact Number</label>
+        <input formControlName='patientContactNo' type="text" class="form-control" placeholder="Patient Contact Number" />
+        <div class="form-control-feedback" *ngIf="appointmentForm.controls.patientContactNo.errors
+         && (appointmentForm.controls.patientContactNo.dirty || appointmentForm.controls.patientContactNo.touched)">
+            <p *ngIf="appointmentForm.controls.patientContactNo.errors" class="text-danger">Enter Valid Contact Number</p>
+          </div>
+        <pre></pre>
+        <label>Patient Date of Birth</label>
+        <input formControlName='patientDateOfBirth' type="date" class="form-control" placeholder="Patient Date of Birth" />
+        <pre></pre>
+        <label>Appointment Date and Time</label>
+        <input formControlName='appointmentDateTime' type="datetime-local" class = "form-control">
+        <pre></pre>
+        <label>Choose Doctor</label>
+        <select [compareWith]="compareFn" formControlName='doctor' class = "form-control"  placeholder="Patient Date of Birth" >  
+            <option *ngFor="let doctor of doctors" [ngValue]="doctor" >{{doctor.name}}</option>  
+        </select>
+        <pre></pre>
+        <button class="btn btn-info">Submit</button>
+      </form>
+  </div>
